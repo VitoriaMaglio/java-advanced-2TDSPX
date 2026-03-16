@@ -38,13 +38,18 @@ public class MovieController {
 //
     @GetMapping("{id}")
     public ResponseEntity<Movie> getMovieById(@PathVariable Long id){
-        log.info("Buscando filme com id {}", id);
-        var optionalMovie = service.getMovieById(id);
-        if (optionalMovie.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
+//        log.info("Buscando filme com id {}", id);
+//        var optionalMovie = service.getMovieById(id);
+//        if (optionalMovie.isEmpty()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        return ResponseEntity.ok(optionalMovie.get());
+        //-> Programação funcional
+        //map é a função que converte dados
+        return service.getMovieById(id).map(m -> ResponseEntity.ok(m))
+                .orElse(ResponseEntity.notFound().build());
 
-        return ResponseEntity.ok(optionalMovie.get());
     }
 
     @DeleteMapping("{id}")
