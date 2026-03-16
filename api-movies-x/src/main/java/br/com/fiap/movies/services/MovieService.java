@@ -48,6 +48,8 @@ public class MovieService {
         if (optionalMovie.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Filme não encontrado");
         }
-        
+        newMovie.setId(id);
+        return repository.save(newMovie);
+
     }
 }
