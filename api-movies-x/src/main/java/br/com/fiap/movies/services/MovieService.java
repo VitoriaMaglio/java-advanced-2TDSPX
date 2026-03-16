@@ -34,23 +34,20 @@ public class MovieService {
         return repository.findById(id);
     }
 
-//    public void deleteMovie(Long id) {
-//        var optionalMovie = getMovieById(id);
-//        if (optionalMovie.isEmpty()) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Filme não encontrado");
-//        }
-//
-//        repository.remove(optionalMovie.get());
-//    }
-//
-//    public Movie updateMovie(Long id, Movie newMovie) {
-//        var optionalMovie  = getMovieById(id);
-//        if (optionalMovie.isEmpty()) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Filme não encontrado");
-//        }
-//        repository.remove(optionalMovie.get());
-//        newMovie.setId(id);
-//        repository.add(newMovie);
-//        return newMovie;
-//    }
+    public void deleteMovie(Long id) {
+        var optionalMovie = getMovieById(id);
+        if (optionalMovie.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Filme não encontrado");
+        }
+
+        repository.deleteById(id);
+    }
+
+    public Movie updateMovie(Long id, Movie newMovie) {
+        var optionalMovie  = getMovieById(id);
+        if (optionalMovie.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Filme não encontrado");
+        }
+        
+    }
 }
