@@ -49,7 +49,9 @@ public class MovieController {
         //map é a função que converte dados
         return service.getMovieById(id).map(m -> ResponseEntity.ok(m))
                 .orElse(ResponseEntity.notFound().build());
-
+        //ou reference method
+        //return service.getMovieById(id).map(ResponseEntity::ok)
+         //       .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("{id}")
